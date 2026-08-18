@@ -85,7 +85,7 @@ header p {
 
   box-shadow: 0 8px 25px rgba(0,0,0,0.35);
 
-  transition: 0.25s;
+  transition: transform 0.15s, background 0.15s;
 }
 
 .boton:hover {
@@ -94,6 +94,12 @@ header p {
   background: rgba(30,30,30,0.70);
 
   box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+/* ANIMACIÓN AL TOCAR */
+
+.boton:active {
+  transform: scale(0.96);
 }
 
 /* PIE */
