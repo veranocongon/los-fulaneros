@@ -7,6 +7,7 @@
 <title>Los Fulañeros</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -14,12 +15,30 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #eef1f5;
   color: #222;
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
+/* CAPA OSCURA PARA QUE SE VEA BIEN EL CONTENIDO */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.35);
+
+  z-index: -1;
+}
+
+/* CABECERA */
+
 header {
-  background: linear-gradient(135deg, #111, #333);
+  background: rgba(17,17,17,0.80);
   color: white;
   text-align: center;
   padding: 70px 20px;
@@ -32,8 +51,10 @@ header h1 {
 
 header p {
   font-size: 19px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
+
+/* MENÚ */
 
 .menu {
   max-width: 950px;
@@ -47,27 +68,38 @@ header p {
 
 .boton {
   display: block;
-  background: white;
+
+  background: rgba(255,255,255,0.94);
   color: #222;
+
   text-decoration: none;
   text-align: center;
+
   padding: 40px 15px;
+
   border-radius: 24px;
+
   font-size: 23px;
   font-weight: bold;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+
   transition: 0.25s;
 }
 
 .boton:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.16);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
 }
+
+/* PIE */
 
 footer {
   text-align: center;
   padding: 50px 20px;
-  background: #111;
+
+  background: rgba(17,17,17,0.85);
+
   color: #aaa;
 }
 
@@ -75,7 +107,10 @@ footer strong {
   color: white;
 }
 
+/* MÓVIL */
+
 @media (max-width: 600px) {
+
   header h1 {
     font-size: 36px;
   }
@@ -83,16 +118,23 @@ footer strong {
   .menu {
     grid-template-columns: 1fr;
   }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
   <h1>LOS FULAÑEROS</h1>
+
   <p>Bienvenidos a nuestra web</p>
+
 </header>
+
 
 <div class="menu">
 
@@ -128,11 +170,55 @@ footer strong {
 
 </div>
 
+
 <footer>
+
   <strong>LOS FULAÑEROS</strong>
+
   <br><br>
+
   Nuestra web
+
 </footer>
+
+
+<script>
+
+/* BUSCAR AUTOMÁTICAMENTE UNA FOTO DE LA CARPETA "fotos" */
+
+const usuario = "veranocongon";
+const repositorio = "los-fulaneros";
+const carpeta = "fotos";
+
+fetch(
+  `https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta}`
+)
+
+.then(respuesta => respuesta.json())
+
+.then(archivos => {
+
+  const fotos = archivos.filter(archivo =>
+    archivo.type === "file" &&
+    /\.(jpg|jpeg|png|gif|webp|heic|heif)$/i.test(archivo.name)
+  );
+
+  if (fotos.length > 0) {
+
+    document.body.style.backgroundImage =
+      `url("${fotos[0].download_url}")`;
+
+  }
+
+})
+
+.catch(error => {
+
+  console.log("No se pudo cargar la foto de fondo.");
+
+});
+
+</script>
 
 </body>
 </html>
