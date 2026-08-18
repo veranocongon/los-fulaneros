@@ -84,6 +84,12 @@ main {
   padding: 10px;
   border-radius: 18px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.foto:hover {
+  transform: scale(1.02);
 }
 
 .foto img {
@@ -100,6 +106,54 @@ main {
   border-radius: 20px;
   text-align: center;
   font-size: 18px;
+}
+
+/* VISOR */
+
+#visor {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#visor img {
+  max-width: 95%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.cerrar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  color: #111;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.descargar {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff8a00;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 17px;
 }
 
 footer {
@@ -185,6 +239,22 @@ Cargando fotos...
 
 </main>
 
+<!-- VISOR DE FOTOS -->
+
+<div id="visor">
+
+<button class="cerrar" onclick="cerrarFoto()">
+✕
+</button>
+
+<img id="fotoGrande" src="" alt="Foto grande">
+
+<a id="botonDescargar" class="descargar" href="" download>
+⬇️ Descargar foto
+</a>
+
+</div>
+
 <footer>
 
 <strong>LOS FULAÑEROS</strong>
@@ -203,8 +273,17 @@ const carpeta = "fotos";
 
 const galeria = document.getElementById("galeria");
 
+const visor = document.getElementById("visor");
+
+const fotoGrande = document.getElementById("fotoGrande");
+
+const botonDescargar = document.getElementById("botonDescargar");
+
+
 fetch(`https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta}`)
+
 .then(respuesta => respuesta.json())
+
 .then(archivos => {
 
   galeria.innerHTML = "";
@@ -223,6 +302,7 @@ fetch(`https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta
     `;
 
     return;
+
   }
 
   fotos.forEach(foto => {
@@ -235,11 +315,24 @@ fetch(`https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta
       <img src="${foto.download_url}" alt="Foto de una comilona">
     `;
 
+    tarjeta.addEventListener("click", () => {
+
+      fotoGrande.src = foto.download_url;
+
+      botonDescargar.href = foto.download_url;
+
+      botonDescargar.download = foto.name;
+
+      visor.style.display = "flex";
+
+    });
+
     galeria.appendChild(tarjeta);
 
   });
 
 })
+
 .catch(error => {
 
   galeria.innerHTML = `
@@ -249,6 +342,27 @@ fetch(`https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta
   `;
 
 });
+
+
+function cerrarFoto() {
+
+  visor.style.display = "none";
+
+  fotoGrande.src = "";
+
+}
+
+
+visor.addEventListener("click", function(event) {
+
+  if (event.target === visor) {
+
+    cerrarFoto();
+
+  }
+
+});
+
 
 </script>
 
