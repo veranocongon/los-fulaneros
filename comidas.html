@@ -12,12 +12,21 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: Arial, sans-serif;
   background: #fff3e0;
   color: #222;
+
+  background-image: none !important;
 }
+
+/* CABECERA */
 
 header {
   background: linear-gradient(135deg, #ff8a00, #ffb347);
@@ -36,11 +45,15 @@ header p {
   margin-top: 10px;
 }
 
+/* CONTENIDO */
+
 main {
   max-width: 1000px;
   margin: 35px auto;
   padding: 20px;
 }
+
+/* VOLVER */
 
 .volver {
   display: inline-block;
@@ -52,6 +65,8 @@ main {
   text-decoration: none;
   font-weight: bold;
 }
+
+/* INTRODUCCIÓN */
 
 .introduccion {
   background: white;
@@ -193,6 +208,8 @@ main {
   z-index: 100000;
 }
 
+/* PIE */
+
 footer {
   text-align: center;
   padding: 45px 20px;
@@ -250,13 +267,11 @@ footer strong {
 
 </header>
 
-
 <main>
 
 <a class="volver" href="index.html">
 ← Volver al inicio
 </a>
-
 
 <div class="introduccion">
 
@@ -270,9 +285,7 @@ planes gastronómicos y recuerdos.
 
 </div>
 
-
 <h2>📸 Fotos</h2>
-
 
 <div class="galeria" id="galeria">
 
@@ -284,7 +297,6 @@ Cargando fotos...
 
 </main>
 
-
 <!-- VISOR -->
 
 <div id="visor">
@@ -293,9 +305,7 @@ Cargando fotos...
 ✕
 </button>
 
-
 <img id="fotoGrande" src="" alt="Foto grande">
-
 
 <a id="botonDescargar"
    class="descargar"
@@ -305,7 +315,6 @@ Cargando fotos...
 </a>
 
 </div>
-
 
 <footer>
 
@@ -317,34 +326,19 @@ Cargando fotos...
 
 </footer>
 
-
 <script>
 
-/* CONFIGURACIÓN */
-
 const usuario = "veranocongon";
-
 const repositorio = "los-fulaneros";
-
 const carpeta = "fotos";
 
-
-/* ELEMENTOS */
-
 const galeria = document.getElementById("galeria");
-
 const visor = document.getElementById("visor");
-
 const fotoGrande = document.getElementById("fotoGrande");
-
 const botonDescargar =
 document.getElementById("botonDescargar");
-
 const cerrar =
 document.getElementById("cerrar");
-
-
-/* BUSCAR FOTOS */
 
 fetch(
   `https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta}`
@@ -355,7 +349,6 @@ fetch(
 .then(archivos => {
 
   galeria.innerHTML = "";
-
 
   if (!Array.isArray(archivos)) {
 
@@ -368,16 +361,11 @@ fetch(
     return;
   }
 
-
   const fotos = archivos.filter(archivo =>
-
     archivo.type === "file" &&
-
     /\.(jpg|jpeg|png|gif|webp|heic|heif)$/i
     .test(archivo.name)
-
   );
-
 
   if (fotos.length === 0) {
 
@@ -390,9 +378,6 @@ fetch(
     return;
   }
 
-
-  /* CREAR CADA FOTO */
-
   fotos.forEach(foto => {
 
     const tarjeta =
@@ -400,45 +385,32 @@ fetch(
 
     tarjeta.className = "foto";
 
-
     const imagen =
     document.createElement("img");
-
 
     imagen.src = foto.download_url;
 
     imagen.alt =
     "Foto de una comilona";
 
-
-    /*
-      AL TOCAR LA FOTO
-      SE ABRE EL VISOR
-    */
-
     imagen.onclick = function() {
 
       fotoGrande.src =
       foto.download_url;
 
-
       botonDescargar.href =
       foto.download_url;
-
 
       botonDescargar.setAttribute(
         "download",
         foto.name
       );
 
-
       visor.style.display = "flex";
 
       document.body.style.overflow =
       "hidden";
-
     };
-
 
     tarjeta.appendChild(imagen);
 
@@ -447,7 +419,6 @@ fetch(
   });
 
 })
-
 
 .catch(error => {
 
@@ -459,9 +430,6 @@ fetch(
 
 });
 
-
-/* CERRAR */
-
 cerrar.onclick = function() {
 
   visor.style.display = "none";
@@ -471,9 +439,6 @@ cerrar.onclick = function() {
   document.body.style.overflow = "";
 
 };
-
-
-/* TOCAR FUERA DE LA FOTO PARA CERRAR */
 
 visor.onclick = function(event) {
 
@@ -490,7 +455,6 @@ visor.onclick = function(event) {
 };
 
 </script>
-
 
 </body>
 </html>
