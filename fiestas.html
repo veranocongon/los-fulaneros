@@ -1,13 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Fiestas - Los Fulañeros</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -16,28 +18,25 @@ body {
 }
 
 header {
-  background: #e84393;
+  background: linear-gradient(135deg, #e84393, #ff79b0);
   color: white;
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
 }
 
 header h1 {
   margin: 0;
-  font-size: 40px;
+  font-size: 44px;
+}
+
+header p {
+  font-size: 18px;
 }
 
 main {
-  max-width: 900px;
+  max-width: 950px;
   margin: 35px auto;
   padding: 20px;
-}
-
-.tarjeta {
-  background: white;
-  padding: 30px;
-  border-radius: 22px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
 }
 
 .volver {
@@ -49,6 +48,50 @@ main {
   border-radius: 12px;
   text-decoration: none;
   font-weight: bold;
+}
+
+.contenido {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.tarjeta {
+  background: white;
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+}
+
+.tarjeta h2 {
+  margin-top: 0;
+  font-size: 27px;
+}
+
+.tarjeta p {
+  line-height: 1.6;
+}
+
+footer {
+  text-align: center;
+  padding: 45px 20px;
+  margin-top: 40px;
+  background: #111;
+  color: #aaa;
+}
+
+footer strong {
+  color: white;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 36px;
+  }
+
+  .contenido {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
@@ -66,18 +109,38 @@ main {
 ← Volver al inicio
 </a>
 
+<div class="contenido">
+
 <div class="tarjeta">
+  <h2>🎉 Fiestas</h2>
+  <p>
+    Aquí iremos poniendo información sobre nuestras fiestas.
+  </p>
+</div>
 
-<h2>🎉 Nuestras fiestas</h2>
+<div class="tarjeta">
+  <h2>📍 Lugares</h2>
+  <p>
+    Aquí iremos poniendo los lugares donde se realizan las fiestas.
+  </p>
+</div>
 
-<p>
-Aquí tendremos nuestras fiestas,
-fechas, planes y eventos.
-</p>
+<div class="tarjeta">
+  <h2>🗓️ Calendario</h2>
+  <p>
+    Aquí iremos poniendo las fechas de nuestras fiestas.
+  </p>
+</div>
 
 </div>
 
 </main>
+
+<footer>
+  <strong>LOS FULAÑEROS</strong>
+  <br><br>
+  🎉 Fiestas
+</footer>
 
 </body>
 </html>
