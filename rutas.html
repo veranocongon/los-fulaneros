@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Rutas - Los Fulañeros</title>
 
 <style>
-
 * {
   box-sizing: border-box;
 }
@@ -33,7 +31,6 @@ header h1 {
 
 header p {
   font-size: 18px;
-  margin-top: 10px;
 }
 
 main {
@@ -53,25 +50,7 @@ main {
   font-weight: bold;
 }
 
-.introduccion {
-  background: white;
-  padding: 30px;
-  border-radius: 22px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
-  margin-bottom: 25px;
-}
-
-.introduccion h2 {
-  margin-top: 0;
-  font-size: 30px;
-}
-
-.introduccion p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.rutas {
+.contenido {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 22px;
@@ -79,28 +58,18 @@ main {
 
 .tarjeta {
   background: white;
-  padding: 25px;
+  padding: 30px;
   border-radius: 22px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.10);
-  transition: 0.25s;
 }
 
-.tarjeta:hover {
-  transform: translateY(-5px);
-}
-
-.tarjeta h3 {
+.tarjeta h2 {
   margin-top: 0;
-  font-size: 24px;
+  font-size: 27px;
 }
 
 .tarjeta p {
   line-height: 1.6;
-}
-
-.info {
-  margin-top: 12px;
-  font-weight: bold;
 }
 
 footer {
@@ -116,28 +85,22 @@ footer strong {
 }
 
 @media (max-width: 600px) {
-
   header h1 {
     font-size: 36px;
   }
 
-  .rutas {
+  .contenido {
     grid-template-columns: 1fr;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
-<h1>🗺️ Rutas</h1>
-
-<p>Los Fulañeros</p>
-
+  <h1>🗺️ Rutas</h1>
+  <p>Los Fulañeros</p>
 </header>
 
 <main>
@@ -146,110 +109,27 @@ footer strong {
 ← Volver al inicio
 </a>
 
-<div class="introduccion">
-
-<h2>🥾 Nuestras rutas</h2>
-
-<p>
-Aquí iremos guardando nuestras rutas,
-excursiones, paseos y lugares que descubramos.
-</p>
-
-</div>
-
-<div class="rutas">
+<div class="contenido">
 
 <div class="tarjeta">
-
-<h3>🥾 Ruta 1</h3>
-
-<p>
-Aquí pondremos la información de nuestra primera ruta.
-</p>
-
-<div class="info">
-📍 Lugar: Por decidir
+  <h2>🗺️ Rutas</h2>
+  <p>
+    Aquí iremos poniendo nuestras rutas y recorridos.
+  </p>
 </div>
-
-<div class="info">
-📏 Distancia: Por decidir
-</div>
-
-<div class="info">
-⏱️ Duración: Por decidir
-</div>
-
-</div>
-
 
 <div class="tarjeta">
-
-<h3>🌲 Ruta 2</h3>
-
-<p>
-Aquí podremos añadir otra ruta o excursión.
-</p>
-
-<div class="info">
-📍 Lugar: Por decidir
+  <h2>📍 Lugares</h2>
+  <p>
+    Aquí iremos poniendo los lugares de nuestras rutas.
+  </p>
 </div>
-
-<div class="info">
-📏 Distancia: Por decidir
-</div>
-
-<div class="info">
-⏱️ Duración: Por decidir
-</div>
-
-</div>
-
 
 <div class="tarjeta">
-
-<h3>🏔️ Ruta 3</h3>
-
-<p>
-Aquí podremos añadir una ruta de montaña,
-campo o naturaleza.
-</p>
-
-<div class="info">
-📍 Lugar: Por decidir
-</div>
-
-<div class="info">
-📏 Distancia: Por decidir
-</div>
-
-<div class="info">
-⏱️ Duración: Por decidir
-</div>
-
-</div>
-
-
-<div class="tarjeta">
-
-<h3>🌊 Ruta 4</h3>
-
-<p>
-Aquí podremos añadir una ruta junto al agua
-o por la costa.
-</p>
-
-<div class="info">
-📍 Lugar: Por decidir
-</div>
-
-<div class="info">
-📏 Distancia: Por decidir
-</div>
-
-<div class="info">
-⏱️ Duración: Por decidir
-</div>
-
+  <h2>🥾 Excursiones</h2>
+  <p>
+    Aquí iremos poniendo nuestras excursiones y salidas.
+  </p>
 </div>
 
 </div>
@@ -257,13 +137,9 @@ o por la costa.
 </main>
 
 <footer>
-
-<strong>LOS FULAÑEROS</strong>
-
-<br><br>
-
-🗺️ Rutas
-
+  <strong>LOS FULAÑEROS</strong>
+  <br><br>
+  🗺️ Rutas
 </footer>
 
 </body>
