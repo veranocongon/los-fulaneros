@@ -19,39 +19,45 @@ html {
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  background: #eef1f5;
   color: #222;
 }
 
-/* CABECERA */
+/* =========================
+   PORTADA
+========================= */
 
 header {
-  background: #111;
+  background: linear-gradient(135deg, #111111, #333333);
   color: white;
   text-align: center;
-  padding: 60px 20px;
+  padding: 75px 20px 65px;
 }
 
 header h1 {
   margin: 0;
-  font-size: 44px;
+  font-size: 48px;
+  letter-spacing: 2px;
 }
 
 header p {
-  margin-top: 10px;
-  font-size: 18px;
+  margin-top: 15px;
+  font-size: 19px;
+  opacity: 0.85;
 }
 
-/* MENÚ */
+/* =========================
+   MENÚ
+========================= */
 
 .menu {
-  max-width: 900px;
-  margin: 30px auto;
+  max-width: 950px;
+  margin: 35px auto;
   padding: 20px;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 22px;
 }
 
 .boton {
@@ -63,73 +69,163 @@ header p {
   text-decoration: none;
   text-align: center;
 
-  padding: 40px 15px;
+  padding: 38px 15px;
 
-  border-radius: 20px;
+  border-radius: 24px;
 
-  font-size: 22px;
+  font-size: 23px;
   font-weight: bold;
 
-  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
 
-  transition: 0.2s;
+  transition: all 0.25s ease;
+}
+
+.boton:first-line {
+  font-size: 35px;
 }
 
 .boton:hover {
-  transform: scale(1.03);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.16);
 }
 
-/* SECCIONES */
+/* =========================
+   SECCIONES
+========================= */
 
 .seccion {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 30px 20px;
+  max-width: 950px;
+  margin: 45px auto;
+  padding: 40px 30px;
 
   background: white;
 
-  border-radius: 20px;
+  border-radius: 25px;
 
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+  scroll-margin-top: 20px;
 }
 
 .seccion h2 {
-  font-size: 30px;
+  margin-top: 0;
+  font-size: 32px;
 }
+
+.seccion p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* =========================
+   COLORES DE LAS SECCIONES
+========================= */
+
+#comilonas {
+  border-top: 8px solid #ff8a00;
+}
+
+#rutas {
+  border-top: 8px solid #27ae60;
+}
+
+#pinpon {
+  border-top: 8px solid #3498db;
+}
+
+#fiestas {
+  border-top: 8px solid #e84393;
+}
+
+#pielago {
+  border-top: 8px solid #00a8cc;
+}
+
+#quienes {
+  border-top: 8px solid #8e44ad;
+}
+
+/* =========================
+   BOTÓN VOLVER
+========================= */
 
 .volver {
   display: inline-block;
 
-  margin-top: 20px;
+  margin-top: 25px;
 
   background: #111;
   color: white;
 
-  padding: 12px 20px;
+  padding: 13px 22px;
 
-  border-radius: 10px;
+  border-radius: 12px;
 
   text-decoration: none;
+
+  font-weight: bold;
+
+  transition: 0.2s;
 }
 
-/* PIE */
+.volver:hover {
+  transform: scale(1.04);
+}
+
+/* =========================
+   PIE
+========================= */
 
 footer {
   text-align: center;
-  padding: 40px;
-  color: #777;
+  padding: 50px 20px;
+
+  background: #111;
+  color: #aaa;
+
+  margin-top: 60px;
 }
 
-/* MÓVIL */
+footer strong {
+  color: white;
+}
+
+/* =========================
+   MÓVIL / TABLET
+========================= */
 
 @media (max-width: 600px) {
 
+  header {
+    padding: 60px 20px;
+  }
+
   header h1 {
-    font-size: 34px;
+    font-size: 36px;
+  }
+
+  header p {
+    font-size: 17px;
   }
 
   .menu {
     grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .boton {
+    padding: 35px 15px;
+    font-size: 21px;
+  }
+
+  .seccion {
+    margin: 30px 15px;
+    padding: 30px 22px;
+  }
+
+  .seccion h2 {
+    font-size: 28px;
   }
 
 }
@@ -141,6 +237,10 @@ footer {
 <body>
 
 
+<!-- =========================
+     PORTADA
+========================= -->
+
 <header>
 
 <h1>LOS FULAÑEROS</h1>
@@ -150,7 +250,9 @@ footer {
 </header>
 
 
-<!-- MENÚ -->
+<!-- =========================
+     MENÚ PRINCIPAL
+========================= -->
 
 <div class="menu">
 
@@ -193,60 +295,69 @@ Piélago
 </div>
 
 
-<!-- COMILONAS -->
+<!-- =========================
+     COMILONAS
+========================= -->
 
 <section class="seccion" id="comilonas">
 
 <h2>🍽️ Comilonas</h2>
 
 <p>
-Aquí iremos poniendo nuestras comilonas, restaurantes,
-comidas y planes gastronómicos.
+Aquí iremos poniendo nuestras comilonas,
+restaurantes, comidas y planes gastronómicos.
 </p>
 
 <a class="volver" href="#">
-Volver arriba
+↑ Volver arriba
 </a>
 
 </section>
 
 
-<!-- RUTAS -->
+<!-- =========================
+     RUTAS
+========================= -->
 
 <section class="seccion" id="rutas">
 
 <h2>🗺️ Rutas</h2>
 
 <p>
-Aquí iremos poniendo nuestras rutas, excursiones,
-lugares y recorridos.
+Aquí iremos poniendo nuestras rutas,
+excursiones, lugares y recorridos.
 </p>
 
 <a class="volver" href="#">
-Volver arriba
+↑ Volver arriba
 </a>
 
 </section>
 
 
-<!-- PINPON -->
+<!-- =========================
+     PINPON
+========================= -->
 
 <section class="seccion" id="pinpon">
 
 <h2>🏓 PinPon</h2>
 
 <p>
-Aquí pondremos todo lo relacionado con PinPon.
+Aquí pondremos todo lo relacionado con PinPon,
+partidas, resultados y planes.
 </p>
 
 <a class="volver" href="#">
-Volver arriba
+↑ Volver arriba
 </a>
 
 </section>
 
 
-<!-- FIESTAS -->
+<!-- =========================
+     FIESTAS
+========================= -->
 
 <section class="seccion" id="fiestas">
 
@@ -258,13 +369,15 @@ planes y eventos.
 </p>
 
 <a class="volver" href="#">
-Volver arriba
+↑ Volver arriba
 </a>
 
 </section>
 
 
-<!-- PIÉLAGO -->
+<!-- =========================
+     PIÉLAGO
+========================= -->
 
 <section class="seccion" id="pielago">
 
@@ -275,13 +388,15 @@ Aquí pondremos todo lo relacionado con Piélago.
 </p>
 
 <a class="volver" href="#">
-Volver arriba
+↑ Volver arriba
 </a>
 
 </section>
 
 
-<!-- QUIÉNES SOMOS -->
+<!-- =========================
+     QUIÉNES SOMOS
+========================= -->
 
 <section class="seccion" id="quienes">
 
@@ -293,15 +408,23 @@ Los Fulañeros.
 </p>
 
 <a class="volver" href="#">
-Volver arriba
+↑ Volver arriba
 </a>
 
 </section>
 
 
+<!-- =========================
+     PIE
+========================= -->
+
 <footer>
 
-Los Fulañeros
+<strong>LOS FULAÑEROS</strong>
+
+<br><br>
+
+Nuestra web
 
 </footer>
 
