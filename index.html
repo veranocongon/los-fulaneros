@@ -7,13 +7,8 @@
 <title>Los Fulañeros</title>
 
 <style>
-
 * {
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -23,32 +18,22 @@ body {
   color: #222;
 }
 
-/* =========================
-   PORTADA
-========================= */
-
 header {
-  background: linear-gradient(135deg, #111111, #333333);
+  background: linear-gradient(135deg, #111, #333);
   color: white;
   text-align: center;
-  padding: 75px 20px 65px;
+  padding: 70px 20px;
 }
 
 header h1 {
   margin: 0;
   font-size: 48px;
-  letter-spacing: 2px;
 }
 
 header p {
-  margin-top: 15px;
   font-size: 19px;
   opacity: 0.85;
 }
-
-/* =========================
-   MENÚ
-========================= */
 
 .menu {
   max-width: 950px;
@@ -62,27 +47,16 @@ header p {
 
 .boton {
   display: block;
-
   background: white;
   color: #222;
-
   text-decoration: none;
   text-align: center;
-
-  padding: 38px 15px;
-
+  padding: 40px 15px;
   border-radius: 24px;
-
   font-size: 23px;
   font-weight: bold;
-
   box-shadow: 0 8px 25px rgba(0,0,0,0.10);
-
-  transition: all 0.25s ease;
-}
-
-.boton:first-line {
-  font-size: 35px;
+  transition: 0.25s;
 }
 
 .boton:hover {
@@ -90,344 +64,75 @@ header p {
   box-shadow: 0 12px 30px rgba(0,0,0,0.16);
 }
 
-/* =========================
-   SECCIONES
-========================= */
-
-.seccion {
-  max-width: 950px;
-  margin: 45px auto;
-  padding: 40px 30px;
-
-  background: white;
-
-  border-radius: 25px;
-
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-
-  scroll-margin-top: 20px;
-}
-
-.seccion h2 {
-  margin-top: 0;
-  font-size: 32px;
-}
-
-.seccion p {
-  font-size: 18px;
-  line-height: 1.7;
-}
-
-/* =========================
-   COLORES DE LAS SECCIONES
-========================= */
-
-#comilonas {
-  border-top: 8px solid #ff8a00;
-}
-
-#rutas {
-  border-top: 8px solid #27ae60;
-}
-
-#pinpon {
-  border-top: 8px solid #3498db;
-}
-
-#fiestas {
-  border-top: 8px solid #e84393;
-}
-
-#pielago {
-  border-top: 8px solid #00a8cc;
-}
-
-#quienes {
-  border-top: 8px solid #8e44ad;
-}
-
-/* =========================
-   BOTÓN VOLVER
-========================= */
-
-.volver {
-  display: inline-block;
-
-  margin-top: 25px;
-
-  background: #111;
-  color: white;
-
-  padding: 13px 22px;
-
-  border-radius: 12px;
-
-  text-decoration: none;
-
-  font-weight: bold;
-
-  transition: 0.2s;
-}
-
-.volver:hover {
-  transform: scale(1.04);
-}
-
-/* =========================
-   PIE
-========================= */
-
 footer {
   text-align: center;
   padding: 50px 20px;
-
   background: #111;
   color: #aaa;
-
-  margin-top: 60px;
 }
 
 footer strong {
   color: white;
 }
 
-/* =========================
-   MÓVIL / TABLET
-========================= */
-
 @media (max-width: 600px) {
-
-  header {
-    padding: 60px 20px;
-  }
-
   header h1 {
     font-size: 36px;
   }
 
-  header p {
-    font-size: 17px;
-  }
-
   .menu {
     grid-template-columns: 1fr;
-    padding: 15px;
   }
-
-  .boton {
-    padding: 35px 15px;
-    font-size: 21px;
-  }
-
-  .seccion {
-    margin: 30px 15px;
-    padding: 30px 22px;
-  }
-
-  .seccion h2 {
-    font-size: 28px;
-  }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     PORTADA
-========================= -->
-
 <header>
-
-<h1>LOS FULAÑEROS</h1>
-
-<p>Bienvenidos a nuestra web</p>
-
+  <h1>LOS FULAÑEROS</h1>
+  <p>Bienvenidos a nuestra web</p>
 </header>
-
-
-<!-- =========================
-     MENÚ PRINCIPAL
-========================= -->
 
 <div class="menu">
 
-<a class="boton" href="#comilonas">
-🍽️
-<br>
-Comilonas
-</a>
+  <a class="boton" href="comidas.html">
+    🍽️<br>
+    Comilonas
+  </a>
 
-<a class="boton" href="#rutas">
-🗺️
-<br>
-Rutas
-</a>
+  <a class="boton" href="rutas.html">
+    🗺️<br>
+    Rutas
+  </a>
 
-<a class="boton" href="#pinpon">
-🏓
-<br>
-PinPon
-</a>
+  <a class="boton" href="pinpon.html">
+    🏓<br>
+    PinPon
+  </a>
 
-<a class="boton" href="#fiestas">
-🎉
-<br>
-Fiestas
-</a>
+  <a class="boton" href="fiestas.html">
+    🎉<br>
+    Fiestas
+  </a>
 
-<a class="boton" href="#pielago">
-🌊
-<br>
-Piélago
-</a>
+  <a class="boton" href="pielago.html">
+    🌊<br>
+    Piélago
+  </a>
 
-<a class="boton" href="#quienes">
-👥
-<br>
-¿Quiénes somos?
-</a>
+  <a class="boton" href="quienes-somos.html">
+    👥<br>
+    ¿Quiénes somos?
+  </a>
 
 </div>
 
-
-<!-- =========================
-     COMILONAS
-========================= -->
-
-<section class="seccion" id="comilonas">
-
-<h2>🍽️ Comilonas</h2>
-
-<p>
-Aquí iremos poniendo nuestras comilonas,
-restaurantes, comidas y planes gastronómicos.
-</p>
-
-<a class="volver" href="#">
-↑ Volver arriba
-</a>
-
-</section>
-
-
-<!-- =========================
-     RUTAS
-========================= -->
-
-<section class="seccion" id="rutas">
-
-<h2>🗺️ Rutas</h2>
-
-<p>
-Aquí iremos poniendo nuestras rutas,
-excursiones, lugares y recorridos.
-</p>
-
-<a class="volver" href="#">
-↑ Volver arriba
-</a>
-
-</section>
-
-
-<!-- =========================
-     PINPON
-========================= -->
-
-<section class="seccion" id="pinpon">
-
-<h2>🏓 PinPon</h2>
-
-<p>
-Aquí pondremos todo lo relacionado con PinPon,
-partidas, resultados y planes.
-</p>
-
-<a class="volver" href="#">
-↑ Volver arriba
-</a>
-
-</section>
-
-
-<!-- =========================
-     FIESTAS
-========================= -->
-
-<section class="seccion" id="fiestas">
-
-<h2>🎉 Fiestas</h2>
-
-<p>
-Aquí tendremos nuestras fiestas, fechas,
-planes y eventos.
-</p>
-
-<a class="volver" href="#">
-↑ Volver arriba
-</a>
-
-</section>
-
-
-<!-- =========================
-     PIÉLAGO
-========================= -->
-
-<section class="seccion" id="pielago">
-
-<h2>🌊 Piélago</h2>
-
-<p>
-Aquí pondremos todo lo relacionado con Piélago.
-</p>
-
-<a class="volver" href="#">
-↑ Volver arriba
-</a>
-
-</section>
-
-
-<!-- =========================
-     QUIÉNES SOMOS
-========================= -->
-
-<section class="seccion" id="quienes">
-
-<h2>👥 ¿Quiénes somos?</h2>
-
-<p>
-Aquí explicaremos quiénes somos y todo sobre
-Los Fulañeros.
-</p>
-
-<a class="volver" href="#">
-↑ Volver arriba
-</a>
-
-</section>
-
-
-<!-- =========================
-     PIE
-========================= -->
-
 <footer>
-
-<strong>LOS FULAÑEROS</strong>
-
-<br><br>
-
-Nuestra web
-
+  <strong>LOS FULAÑEROS</strong>
+  <br><br>
+  Nuestra web
 </footer>
-
 
 </body>
 </html>
