@@ -7,6 +7,11 @@
 <title>Rutas - Los Fulañeros</title>
 
 <style>
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -15,28 +20,26 @@ body {
 }
 
 header {
-  background: #27ae60;
+  background: linear-gradient(135deg, #27ae60, #6bd58a);
   color: white;
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
 }
 
 header h1 {
   margin: 0;
-  font-size: 40px;
+  font-size: 44px;
+}
+
+header p {
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 main {
-  max-width: 900px;
+  max-width: 950px;
   margin: 35px auto;
   padding: 20px;
-}
-
-.tarjeta {
-  background: white;
-  padding: 30px;
-  border-radius: 22px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
 }
 
 .volver {
@@ -49,14 +52,92 @@ main {
   text-decoration: none;
   font-weight: bold;
 }
+
+.introduccion {
+  background: white;
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+  margin-bottom: 25px;
+}
+
+.introduccion h2 {
+  margin-top: 0;
+  font-size: 30px;
+}
+
+.introduccion p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.rutas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.tarjeta {
+  background: white;
+  padding: 25px;
+  border-radius: 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+  transition: 0.25s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.tarjeta p {
+  line-height: 1.6;
+}
+
+.info {
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 45px 20px;
+  margin-top: 40px;
+  background: #111;
+  color: #aaa;
+}
+
+footer strong {
+  color: white;
+}
+
+@media (max-width: 600px) {
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .rutas {
+    grid-template-columns: 1fr;
+  }
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>🗺️ Rutas</h1>
-  <p>Los Fulañeros</p>
+
+<h1>🗺️ Rutas</h1>
+
+<p>Los Fulañeros</p>
+
 </header>
 
 <main>
@@ -65,18 +146,125 @@ main {
 ← Volver al inicio
 </a>
 
-<div class="tarjeta">
+<div class="introduccion">
 
 <h2>🥾 Nuestras rutas</h2>
 
 <p>
-Aquí iremos poniendo nuestras rutas,
-excursiones, lugares y recorridos.
+Aquí iremos guardando nuestras rutas,
+excursiones, paseos y lugares que descubramos.
 </p>
 
 </div>
 
+<div class="rutas">
+
+<div class="tarjeta">
+
+<h3>🥾 Ruta 1</h3>
+
+<p>
+Aquí pondremos la información de nuestra primera ruta.
+</p>
+
+<div class="info">
+📍 Lugar: Por decidir
+</div>
+
+<div class="info">
+📏 Distancia: Por decidir
+</div>
+
+<div class="info">
+⏱️ Duración: Por decidir
+</div>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>🌲 Ruta 2</h3>
+
+<p>
+Aquí podremos añadir otra ruta o excursión.
+</p>
+
+<div class="info">
+📍 Lugar: Por decidir
+</div>
+
+<div class="info">
+📏 Distancia: Por decidir
+</div>
+
+<div class="info">
+⏱️ Duración: Por decidir
+</div>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>🏔️ Ruta 3</h3>
+
+<p>
+Aquí podremos añadir una ruta de montaña,
+campo o naturaleza.
+</p>
+
+<div class="info">
+📍 Lugar: Por decidir
+</div>
+
+<div class="info">
+📏 Distancia: Por decidir
+</div>
+
+<div class="info">
+⏱️ Duración: Por decidir
+</div>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>🌊 Ruta 4</h3>
+
+<p>
+Aquí podremos añadir una ruta junto al agua
+o por la costa.
+</p>
+
+<div class="info">
+📍 Lugar: Por decidir
+</div>
+
+<div class="info">
+📏 Distancia: Por decidir
+</div>
+
+<div class="info">
+⏱️ Duración: Por decidir
+</div>
+
+</div>
+
+</div>
+
 </main>
+
+<footer>
+
+<strong>LOS FULAÑEROS</strong>
+
+<br><br>
+
+🗺️ Rutas
+
+</footer>
 
 </body>
 </html>
