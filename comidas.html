@@ -22,7 +22,6 @@ body {
   font-family: Arial, sans-serif;
   background: #fff3e0;
   color: #222;
-
   background-image: none !important;
 }
 
@@ -107,9 +106,7 @@ main {
   object-fit: cover;
   border-radius: 12px;
   display: block;
-
   cursor: pointer;
-
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -129,82 +126,58 @@ main {
 
 #visor {
   display: none;
-
   position: fixed;
-
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-
   z-index: 99999;
-
   background: rgba(0,0,0,0.95);
-
   align-items: center;
   justify-content: center;
-
   padding: 20px;
+  touch-action: pan-y;
 }
 
 #fotoGrande {
   max-width: 95%;
   max-height: 75vh;
-
   width: auto;
   height: auto;
-
   object-fit: contain;
-
   border-radius: 12px;
-
   display: block;
+  transition: opacity 0.15s;
 }
 
 .cerrar {
   position: absolute;
-
   top: 15px;
   right: 15px;
-
   width: 48px;
   height: 48px;
-
   background: white;
   color: #111;
-
   border: none;
-
   border-radius: 50%;
-
   font-size: 25px;
   font-weight: bold;
-
   cursor: pointer;
-
   z-index: 100000;
 }
 
 .descargar {
   position: absolute;
-
   bottom: 20px;
   left: 50%;
-
   transform: translateX(-50%);
-
   background: #ff8a00;
   color: white;
-
   padding: 14px 22px;
-
   border-radius: 12px;
-
   text-decoration: none;
-
   font-weight: bold;
   font-size: 17px;
-
   z-index: 100000;
 }
 
@@ -214,7 +187,6 @@ footer {
   text-align: center;
   padding: 45px 20px;
   margin-top: 40px;
-
   background: #111;
   color: #aaa;
 }
@@ -340,6 +312,53 @@ document.getElementById("botonDescargar");
 const cerrar =
 document.getElementById("cerrar");
 
+let fotos = [];
+let fotoActual = 0;
+
+
+/* MOSTRAR FOTO */
+
+function mostrarFoto(indice) {
+
+  if (fotos.length === 0) return;
+
+  if (indice < 0) {
+    indice = fotos.length - 1;
+  }
+
+  if (indice >= fotos.length) {
+    indice = 0;
+  }
+
+  fotoActual = indice;
+
+  fotoGrande.style.opacity = "0";
+
+  setTimeout(() => {
+
+    fotoGrande.src =
+      fotos[fotoActual].download_url;
+
+    fotoGrande.alt =
+      "Foto de una comilona";
+
+    botonDescargar.href =
+      fotos[fotoActual].download_url;
+
+    botonDescargar.setAttribute(
+      "download",
+      fotos[fotoActual].name
+    );
+
+    fotoGrande.style.opacity = "1";
+
+  }, 100);
+
+}
+
+
+/* BUSCAR FOTOS */
+
 fetch(
   `https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta}`
 )
@@ -361,7 +380,7 @@ fetch(
     return;
   }
 
-  const fotos = archivos.filter(archivo =>
+  fotos = archivos.filter(archivo =>
     archivo.type === "file" &&
     /\.(jpg|jpeg|png|gif|webp|heic|heif)$/i
     .test(archivo.name)
@@ -378,38 +397,33 @@ fetch(
     return;
   }
 
-  fotos.forEach(foto => {
+  fotos.forEach((foto, indice) => {
 
     const tarjeta =
-    document.createElement("div");
+      document.createElement("div");
 
     tarjeta.className = "foto";
 
     const imagen =
-    document.createElement("img");
+      document.createElement("img");
 
-    imagen.src = foto.download_url;
+    imagen.src =
+      foto.download_url;
 
     imagen.alt =
-    "Foto de una comilona";
+      "Foto de una comilona";
 
     imagen.onclick = function() {
 
-      fotoGrande.src =
-      foto.download_url;
+      fotoActual = indice;
 
-      botonDescargar.href =
-      foto.download_url;
-
-      botonDescargar.setAttribute(
-        "download",
-        foto.name
-      );
+      mostrarFoto(fotoActual);
 
       visor.style.display = "flex";
 
       document.body.style.overflow =
-      "hidden";
+        "hidden";
+
     };
 
     tarjeta.appendChild(imagen);
@@ -430,7 +444,10 @@ fetch(
 
 });
 
-cerrar.onclick = function() {
+
+/* CERRAR */
+
+function cerrarVisor() {
 
   visor.style.display = "none";
 
@@ -438,21 +455,105 @@ cerrar.onclick = function() {
 
   document.body.style.overflow = "";
 
-};
+}
+
+cerrar.onclick = cerrarVisor;
+
+
+/* TOCAR FUERA DE LA FOTO */
 
 visor.onclick = function(event) {
 
   if (event.target === visor) {
 
-    visor.style.display = "none";
-
-    fotoGrande.src = "";
-
-    document.body.style.overflow = "";
+    cerrarVisor();
 
   }
 
 };
+
+
+/* DESLIZAR CON EL DEDO */
+
+let inicioX = 0;
+let inicioY = 0;
+
+visor.addEventListener("touchstart", function(event) {
+
+  inicioX = event.touches[0].clientX;
+  inicioY = event.touches[0].clientY;
+
+}, { passive: true });
+
+
+visor.addEventListener("touchend", function(event) {
+
+  const finalX =
+    event.changedTouches[0].clientX;
+
+  const finalY =
+    event.changedTouches[0].clientY;
+
+  const diferenciaX =
+    finalX - inicioX;
+
+  const diferenciaY =
+    finalY - inicioY;
+
+
+  /* Solo contamos un movimiento horizontal */
+
+  if (
+    Math.abs(diferenciaX) > 60 &&
+    Math.abs(diferenciaX) > Math.abs(diferenciaY)
+  ) {
+
+    if (diferenciaX < 0) {
+
+      /* Deslizar a la izquierda → siguiente */
+
+      mostrarFoto(fotoActual + 1);
+
+    } else {
+
+      /* Deslizar a la derecha → anterior */
+
+      mostrarFoto(fotoActual - 1);
+
+    }
+
+  }
+
+}, { passive: true });
+
+
+/* TECLADO */
+
+document.addEventListener("keydown", function(event) {
+
+  if (visor.style.display !== "flex") {
+    return;
+  }
+
+  if (event.key === "ArrowRight") {
+
+    mostrarFoto(fotoActual + 1);
+
+  }
+
+  if (event.key === "ArrowLeft") {
+
+    mostrarFoto(fotoActual - 1);
+
+  }
+
+  if (event.key === "Escape") {
+
+    cerrarVisor();
+
+  }
+
+});
 
 </script>
 
