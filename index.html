@@ -17,13 +17,14 @@ body {
   font-family: Arial, sans-serif;
   color: #222;
 
+  background-image: url("fotos/IMG-20260818-WA0028.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
 
-/* CAPA OSCURA PARA QUE SE VEA BIEN EL CONTENIDO */
+/* CAPA OSCURA */
 
 body::before {
   content: "";
@@ -180,45 +181,6 @@ footer strong {
   Nuestra web
 
 </footer>
-
-
-<script>
-
-/* BUSCAR AUTOMÁTICAMENTE UNA FOTO DE LA CARPETA "fotos" */
-
-const usuario = "veranocongon";
-const repositorio = "los-fulaneros";
-const carpeta = "fotos";
-
-fetch(
-  `https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta}`
-)
-
-.then(respuesta => respuesta.json())
-
-.then(archivos => {
-
-  const fotos = archivos.filter(archivo =>
-    archivo.type === "file" &&
-    /\.(jpg|jpeg|png|gif|webp|heic|heif)$/i.test(archivo.name)
-  );
-
-  if (fotos.length > 0) {
-
-    document.body.style.backgroundImage =
-      `url("${fotos[0].download_url}")`;
-
-  }
-
-})
-
-.catch(error => {
-
-  console.log("No se pudo cargar la foto de fondo.");
-
-});
-
-</script>
 
 </body>
 </html>
