@@ -19,8 +19,6 @@ body {
   color: #222;
 }
 
-/* CABECERA */
-
 header {
   background: linear-gradient(135deg, #ff8a00, #ffb347);
   color: white;
@@ -38,118 +36,77 @@ header p {
   margin-top: 10px;
 }
 
-/* CONTENIDO */
-
 main {
-  max-width: 950px;
+  max-width: 1000px;
   margin: 35px auto;
   padding: 20px;
 }
 
-/* VOLVER */
-
 .volver {
   display: inline-block;
-
   margin-bottom: 25px;
-
   background: #111;
   color: white;
-
   padding: 13px 20px;
-
   border-radius: 12px;
-
   text-decoration: none;
-
   font-weight: bold;
-
-  transition: 0.2s;
 }
-
-.volver:hover {
-  transform: scale(1.03);
-}
-
-/* INTRODUCCIÓN */
 
 .introduccion {
   background: white;
-
   padding: 30px;
-
   border-radius: 22px;
-
   box-shadow: 0 8px 25px rgba(0,0,0,0.10);
-
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .introduccion h2 {
   margin-top: 0;
-
   font-size: 30px;
 }
 
 .introduccion p {
   font-size: 18px;
-
   line-height: 1.6;
 }
 
-/* TARJETAS */
+/* GALERÍA */
 
-.comilonas {
+.galeria {
   display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
-.tarjeta {
+.foto {
   background: white;
-
-  padding: 25px;
-
-  border-radius: 22px;
-
-  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
-
-  transition: 0.25s;
+  padding: 10px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.10);
 }
 
-.tarjeta:hover {
-  transform: translateY(-5px);
+.foto img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
 }
 
-.tarjeta h3 {
-  margin-top: 0;
-
-  font-size: 24px;
+.sin-fotos {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 18px;
 }
-
-.tarjeta p {
-  line-height: 1.6;
-}
-
-.info {
-  margin-top: 15px;
-
-  font-weight: bold;
-}
-
-/* PIE */
 
 footer {
   text-align: center;
-
   padding: 45px 20px;
-
   margin-top: 40px;
-
   background: #111;
-
   color: #aaa;
 }
 
@@ -157,29 +114,38 @@ footer strong {
   color: white;
 }
 
-/* MÓVIL */
-
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
   header h1 {
     font-size: 36px;
   }
 
-  .comilonas {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .foto img {
+    height: 180px;
+  }
+
+}
+
+@media (max-width: 450px) {
+
+  .galeria {
     grid-template-columns: 1fr;
+  }
+
+  .foto img {
+    height: auto;
   }
 
 }
 
 </style>
-
 </head>
 
-
 <body>
-
-
-<!-- CABECERA -->
 
 <header>
 
@@ -189,18 +155,11 @@ footer strong {
 
 </header>
 
-
 <main>
-
-
-<!-- VOLVER -->
 
 <a class="volver" href="index.html">
 ← Volver al inicio
 </a>
-
-
-<!-- INTRODUCCIÓN -->
 
 <div class="introduccion">
 
@@ -208,103 +167,23 @@ footer strong {
 
 <p>
 Bienvenidos a la sección de Comilonas de Los Fulañeros.
-Aquí iremos guardando nuestras comidas, restaurantes
-y planes gastronómicos.
+Aquí iremos guardando nuestras comidas, restaurantes,
+planes gastronómicos y recuerdos.
 </p>
 
 </div>
 
+<h2>📸 Fotos</h2>
 
-<!-- COMILONAS -->
+<div class="galeria" id="galeria">
 
-<div class="comilonas">
-
-
-<div class="tarjeta">
-
-<h3>🍕 Comilona 1</h3>
-
-<p>
-Aquí podremos poner información sobre nuestra primera
-comilona.
-</p>
-
-<div class="info">
-📍 Lugar: Por decidir
+<div class="sin-fotos">
+Cargando fotos...
 </div>
-
-<div class="info">
-⭐ Valoración: Por decidir
-</div>
-
-</div>
-
-
-<div class="tarjeta">
-
-<h3>🍔 Comilona 2</h3>
-
-<p>
-Aquí podremos poner información sobre otra comida,
-restaurante o plan.
-</p>
-
-<div class="info">
-📍 Lugar: Por decidir
-</div>
-
-<div class="info">
-⭐ Valoración: Por decidir
-</div>
-
-</div>
-
-
-<div class="tarjeta">
-
-<h3>🍝 Comilona 3</h3>
-
-<p>
-Aquí podremos añadir otra de nuestras comilonas.
-</p>
-
-<div class="info">
-📍 Lugar: Por decidir
-</div>
-
-<div class="info">
-⭐ Valoración: Por decidir
-</div>
-
-</div>
-
-
-<div class="tarjeta">
-
-<h3>🍦 Comilona 4</h3>
-
-<p>
-Aquí podremos añadir postres, meriendas
-u otras comidas.
-</p>
-
-<div class="info">
-📍 Lugar: Por decidir
-</div>
-
-<div class="info">
-⭐ Valoración: Por decidir
-</div>
-
-</div>
-
 
 </div>
 
 </main>
-
-
-<!-- PIE -->
 
 <footer>
 
@@ -316,6 +195,62 @@ u otras comidas.
 
 </footer>
 
+<script>
+
+const usuario = "veranocongon";
+const repositorio = "los-fulaneros";
+const carpeta = "fotos";
+
+const galeria = document.getElementById("galeria");
+
+fetch(`https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta}`)
+.then(respuesta => respuesta.json())
+.then(archivos => {
+
+  galeria.innerHTML = "";
+
+  const fotos = archivos.filter(archivo =>
+    archivo.type === "file" &&
+    /\.(jpg|jpeg|png|gif|webp)$/i.test(archivo.name)
+  );
+
+  if (fotos.length === 0) {
+
+    galeria.innerHTML = `
+      <div class="sin-fotos">
+        Todavía no hay fotos.
+      </div>
+    `;
+
+    return;
+  }
+
+  fotos.forEach(foto => {
+
+    const tarjeta = document.createElement("div");
+
+    tarjeta.className = "foto";
+
+    tarjeta.innerHTML = `
+      <img src="${foto.download_url}" alt="Foto de una comilona">
+    `;
+
+    galeria.appendChild(tarjeta);
+
+  });
+
+})
+.catch(error => {
+
+  galeria.innerHTML = `
+    <div class="sin-fotos">
+      No se han podido cargar las fotos.
+    </div>
+  `;
+
+});
+
+</script>
 
 </body>
 </html>
