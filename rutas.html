@@ -51,8 +51,6 @@ main {
   padding: 20px;
 }
 
-/* VOLVER */
-
 .volver {
   display: inline-block;
   margin-bottom: 25px;
@@ -126,10 +124,7 @@ main {
 #visor {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 99999;
   background: rgba(0,0,0,0.95);
   align-items: center;
@@ -138,7 +133,7 @@ main {
 }
 
 #fotoGrande {
-  max-width: 95%;
+  max-width: 90%;
   max-height: 75vh;
   width: auto;
   height: auto;
@@ -147,34 +142,80 @@ main {
   display: block;
 }
 
+/* BOTONES DEL VISOR */
+
 .cerrar {
   position: absolute;
   top: 15px;
   right: 15px;
+
   width: 48px;
   height: 48px;
+
   background: white;
   color: #111;
+
   border: none;
   border-radius: 50%;
+
   font-size: 25px;
   font-weight: bold;
+
   cursor: pointer;
   z-index: 100000;
 }
 
+.anterior,
+.siguiente {
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 50px;
+  height: 50px;
+
+  background: rgba(255,255,255,0.9);
+  color: #111;
+
+  border: none;
+  border-radius: 50%;
+
+  font-size: 30px;
+  font-weight: bold;
+
+  cursor: pointer;
+  z-index: 100000;
+}
+
+.anterior {
+  left: 15px;
+}
+
+.siguiente {
+  right: 15px;
+}
+
 .descargar {
   position: absolute;
+
   bottom: 20px;
   left: 50%;
+
   transform: translateX(-50%);
+
   background: #27ae60;
   color: white;
+
   padding: 14px 22px;
+
   border-radius: 12px;
+
   text-decoration: none;
+
   font-weight: bold;
   font-size: 17px;
+
   z-index: 100000;
 }
 
@@ -206,6 +247,13 @@ footer strong {
 
   .foto img {
     height: 180px;
+  }
+
+  .anterior,
+  .siguiente {
+    width: 45px;
+    height: 45px;
+    font-size: 25px;
   }
 
 }
@@ -265,7 +313,7 @@ Cargando fotos...
 
 </main>
 
-<!-- VISOR -->
+<!-- VISOR DE FOTOS -->
 
 <div id="visor">
 
@@ -273,7 +321,15 @@ Cargando fotos...
 ✕
 </button>
 
+<button class="anterior" id="anterior">
+‹
+</button>
+
 <img id="fotoGrande" src="" alt="Foto grande">
+
+<button class="siguiente" id="siguiente">
+›
+</button>
 
 <a id="botonDescargar"
    class="descargar"
@@ -305,8 +361,21 @@ const visor = document.getElementById("visor");
 const fotoGrande = document.getElementById("fotoGrande");
 const botonDescargar =
 document.getElementById("botonDescargar");
+
 const cerrar =
 document.getElementById("cerrar");
+
+const anterior =
+document.getElementById("anterior");
+
+const siguiente =
+document.getElementById("siguiente");
+
+let fotos = [];
+let indiceActual = 0;
+
+
+/* BUSCAR FOTOS */
 
 fetch(
   `https://api.github.com/repos/${usuario}/${repositorio}/contents/${carpeta}`
@@ -329,7 +398,7 @@ fetch(
     return;
   }
 
-  const fotos = archivos.filter(archivo =>
+  fotos = archivos.filter(archivo =>
     archivo.type === "file" &&
     /\.(jpg|jpeg|png|gif|webp|heic|heif)$/i
     .test(archivo.name)
@@ -346,7 +415,10 @@ fetch(
     return;
   }
 
-  fotos.forEach(foto => {
+
+  /* CREAR GALERÍA */
+
+  fotos.forEach((foto, indice) => {
 
     const tarjeta =
     document.createElement("div");
@@ -360,24 +432,15 @@ fetch(
 
     imagen.alt = "Foto de una ruta";
 
+
     imagen.onclick = function() {
 
-      fotoGrande.src =
-      foto.download_url;
+      indiceActual = indice;
 
-      botonDescargar.href =
-      foto.download_url;
+      mostrarFoto();
 
-      botonDescargar.setAttribute(
-        "download",
-        foto.name
-      );
-
-      visor.style.display = "flex";
-
-      document.body.style.overflow =
-      "hidden";
     };
+
 
     tarjeta.appendChild(imagen);
 
@@ -386,6 +449,7 @@ fetch(
   });
 
 })
+
 
 .catch(error => {
 
@@ -397,6 +461,69 @@ fetch(
 
 });
 
+
+/* MOSTRAR FOTO */
+
+function mostrarFoto() {
+
+  const foto = fotos[indiceActual];
+
+  fotoGrande.src = foto.download_url;
+
+  botonDescargar.href = foto.download_url;
+
+  botonDescargar.setAttribute(
+    "download",
+    foto.name
+  );
+
+  visor.style.display = "flex";
+
+  document.body.style.overflow = "hidden";
+
+}
+
+
+/* SIGUIENTE */
+
+siguiente.onclick = function(event) {
+
+  event.stopPropagation();
+
+  if (fotos.length === 0) return;
+
+  indiceActual++;
+
+  if (indiceActual >= fotos.length) {
+    indiceActual = 0;
+  }
+
+  mostrarFoto();
+
+};
+
+
+/* ANTERIOR */
+
+anterior.onclick = function(event) {
+
+  event.stopPropagation();
+
+  if (fotos.length === 0) return;
+
+  indiceActual--;
+
+  if (indiceActual < 0) {
+    indiceActual = fotos.length - 1;
+  }
+
+  mostrarFoto();
+
+};
+
+
+/* CERRAR */
+
 cerrar.onclick = function() {
 
   visor.style.display = "none";
@@ -406,6 +533,9 @@ cerrar.onclick = function() {
   document.body.style.overflow = "";
 
 };
+
+
+/* TOCAR FUERA DE LA FOTO */
 
 visor.onclick = function(event) {
 
@@ -420,6 +550,52 @@ visor.onclick = function(event) {
   }
 
 };
+
+
+/* DESLIZAR CON EL DEDO */
+
+let inicioX = 0;
+
+visor.addEventListener("touchstart", function(event) {
+
+  inicioX = event.touches[0].clientX;
+
+});
+
+
+visor.addEventListener("touchend", function(event) {
+
+  const finalX = event.changedTouches[0].clientX;
+
+  const diferencia = finalX - inicioX;
+
+
+  if (Math.abs(diferencia) < 50) {
+    return;
+  }
+
+
+  if (diferencia < 0) {
+
+    indiceActual++;
+
+    if (indiceActual >= fotos.length) {
+      indiceActual = 0;
+    }
+
+  } else {
+
+    indiceActual--;
+
+    if (indiceActual < 0) {
+      indiceActual = fotos.length - 1;
+    }
+
+  }
+
+  mostrarFoto();
+
+});
 
 </script>
 
