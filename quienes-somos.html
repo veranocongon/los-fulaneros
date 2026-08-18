@@ -7,6 +7,11 @@
 <title>¿Quiénes somos? - Los Fulañeros</title>
 
 <style>
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -15,28 +20,26 @@ body {
 }
 
 header {
-  background: #8e44ad;
+  background: linear-gradient(135deg, #8e44ad, #b96ee8);
   color: white;
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
 }
 
 header h1 {
   margin: 0;
-  font-size: 40px;
+  font-size: 44px;
+}
+
+header p {
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 main {
-  max-width: 900px;
+  max-width: 950px;
   margin: 35px auto;
   padding: 20px;
-}
-
-.tarjeta {
-  background: white;
-  padding: 30px;
-  border-radius: 22px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
 }
 
 .volver {
@@ -49,14 +52,69 @@ main {
   text-decoration: none;
   font-weight: bold;
 }
+
+.contenido {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.tarjeta {
+  background: white;
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+  transition: 0.25s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+.tarjeta h2 {
+  margin-top: 0;
+  font-size: 27px;
+}
+
+.tarjeta p {
+  line-height: 1.6;
+}
+
+footer {
+  text-align: center;
+  padding: 45px 20px;
+  margin-top: 40px;
+  background: #111;
+  color: #aaa;
+}
+
+footer strong {
+  color: white;
+}
+
+@media (max-width: 600px) {
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .contenido {
+    grid-template-columns: 1fr;
+  }
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>👥 ¿Quiénes somos?</h1>
-  <p>Los Fulañeros</p>
+
+<h1>👥 ¿Quiénes somos?</h1>
+
+<p>Los Fulañeros</p>
+
 </header>
 
 <main>
@@ -65,18 +123,54 @@ main {
 ← Volver al inicio
 </a>
 
+<div class="contenido">
+
 <div class="tarjeta">
 
 <h2>👥 Los Fulañeros</h2>
 
 <p>
-Aquí explicaremos quiénes somos y todo sobre
-Los Fulañeros.
+Aquí explicaremos quiénes somos,
+cómo nació Los Fulañeros y qué hacemos.
 </p>
 
 </div>
 
+<div class="tarjeta">
+
+<h2>⭐ Nosotros</h2>
+
+<p>
+Aquí podremos presentar a las personas
+que forman parte de Los Fulañeros.
+</p>
+
+</div>
+
+<div class="tarjeta">
+
+<h2>📖 Nuestra historia</h2>
+
+<p>
+Aquí podremos contar la historia,
+los momentos y las aventuras de Los Fulañeros.
+</p>
+
+</div>
+
+</div>
+
 </main>
+
+<footer>
+
+<strong>LOS FULAÑEROS</strong>
+
+<br><br>
+
+👥 ¿Quiénes somos?
+
+</footer>
 
 </body>
 </html>
