@@ -7,6 +7,11 @@
 <title>Comilonas - Los Fulañeros</title>
 
 <style>
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -14,69 +19,303 @@ body {
   color: #222;
 }
 
+/* CABECERA */
+
 header {
-  background: #ff8a00;
+  background: linear-gradient(135deg, #ff8a00, #ffb347);
   color: white;
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px;
 }
 
 header h1 {
   margin: 0;
-  font-size: 40px;
+  font-size: 44px;
 }
 
+header p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* CONTENIDO */
+
 main {
-  max-width: 900px;
+  max-width: 950px;
   margin: 35px auto;
   padding: 20px;
 }
 
-.tarjeta {
-  background: white;
-  padding: 30px;
-  border-radius: 22px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
-}
+/* VOLVER */
 
 .volver {
   display: inline-block;
+
   margin-bottom: 25px;
+
   background: #111;
   color: white;
+
   padding: 13px 20px;
+
   border-radius: 12px;
+
   text-decoration: none;
+
+  font-weight: bold;
+
+  transition: 0.2s;
+}
+
+.volver:hover {
+  transform: scale(1.03);
+}
+
+/* INTRODUCCIÓN */
+
+.introduccion {
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 22px;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+
+  margin-bottom: 25px;
+}
+
+.introduccion h2 {
+  margin-top: 0;
+
+  font-size: 30px;
+}
+
+.introduccion p {
+  font-size: 18px;
+
+  line-height: 1.6;
+}
+
+/* TARJETAS */
+
+.comilonas {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 22px;
+}
+
+.tarjeta {
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 22px;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+
+  transition: 0.25s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+
+  font-size: 24px;
+}
+
+.tarjeta p {
+  line-height: 1.6;
+}
+
+.info {
+  margin-top: 15px;
+
   font-weight: bold;
 }
+
+/* PIE */
+
+footer {
+  text-align: center;
+
+  padding: 45px 20px;
+
+  margin-top: 40px;
+
+  background: #111;
+
+  color: #aaa;
+}
+
+footer strong {
+  color: white;
+}
+
+/* MÓVIL */
+
+@media (max-width: 600px) {
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .comilonas {
+    grid-template-columns: 1fr;
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- CABECERA -->
+
 <header>
-  <h1>🍽️ Comilonas</h1>
-  <p>Los Fulañeros</p>
+
+<h1>🍽️ Comilonas</h1>
+
+<p>Los Fulañeros</p>
+
 </header>
 
+
 <main>
+
+
+<!-- VOLVER -->
 
 <a class="volver" href="index.html">
 ← Volver al inicio
 </a>
 
-<div class="tarjeta">
+
+<!-- INTRODUCCIÓN -->
+
+<div class="introduccion">
 
 <h2>🍴 Nuestras comilonas</h2>
 
 <p>
-Aquí iremos poniendo nuestras comidas,
-restaurantes y planes gastronómicos.
+Bienvenidos a la sección de Comilonas de Los Fulañeros.
+Aquí iremos guardando nuestras comidas, restaurantes
+y planes gastronómicos.
 </p>
 
 </div>
 
+
+<!-- COMILONAS -->
+
+<div class="comilonas">
+
+
+<div class="tarjeta">
+
+<h3>🍕 Comilona 1</h3>
+
+<p>
+Aquí podremos poner información sobre nuestra primera
+comilona.
+</p>
+
+<div class="info">
+📍 Lugar: Por decidir
+</div>
+
+<div class="info">
+⭐ Valoración: Por decidir
+</div>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>🍔 Comilona 2</h3>
+
+<p>
+Aquí podremos poner información sobre otra comida,
+restaurante o plan.
+</p>
+
+<div class="info">
+📍 Lugar: Por decidir
+</div>
+
+<div class="info">
+⭐ Valoración: Por decidir
+</div>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>🍝 Comilona 3</h3>
+
+<p>
+Aquí podremos añadir otra de nuestras comilonas.
+</p>
+
+<div class="info">
+📍 Lugar: Por decidir
+</div>
+
+<div class="info">
+⭐ Valoración: Por decidir
+</div>
+
+</div>
+
+
+<div class="tarjeta">
+
+<h3>🍦 Comilona 4</h3>
+
+<p>
+Aquí podremos añadir postres, meriendas
+u otras comidas.
+</p>
+
+<div class="info">
+📍 Lugar: Por decidir
+</div>
+
+<div class="info">
+⭐ Valoración: Por decidir
+</div>
+
+</div>
+
+
+</div>
+
 </main>
+
+
+<!-- PIE -->
+
+<footer>
+
+<strong>LOS FULAÑEROS</strong>
+
+<br><br>
+
+🍽️ Comilonas
+
+</footer>
+
 
 </body>
 </html>
