@@ -1,122 +1,310 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Los Fulañeros</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>Los Fulañeros</title>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
+<style>
 
-    header {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 55px 20px;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 42px;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    header p {
-      margin-top: 10px;
-      font-size: 18px;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
 
-    .menu {
-      max-width: 900px;
-      margin: 35px auto;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
+/* CABECERA */
 
-    .categoria {
-      display: block;
-      background: white;
-      border-radius: 20px;
-      padding: 35px 15px;
-      text-align: center;
-      text-decoration: none;
-      color: #222;
-      font-size: 22px;
-      font-weight: bold;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.12);
-      transition: transform 0.2s;
-    }
+header {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
 
-    .categoria:hover {
-      transform: scale(1.02);
-    }
+header h1 {
+  margin: 0;
+  font-size: 44px;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #777;
-    }
+header p {
+  margin-top: 10px;
+  font-size: 18px;
+}
 
-    @media (max-width: 600px) {
-      .menu {
-        grid-template-columns: 1fr;
-      }
+/* MENÚ */
 
-      header h1 {
-        font-size: 34px;
-      }
-    }
-  </style>
+.menu {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.boton {
+  display: block;
+
+  background: white;
+  color: #222;
+
+  text-decoration: none;
+  text-align: center;
+
+  padding: 40px 15px;
+
+  border-radius: 20px;
+
+  font-size: 22px;
+  font-weight: bold;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+
+  transition: 0.2s;
+}
+
+.boton:hover {
+  transform: scale(1.03);
+}
+
+/* SECCIONES */
+
+.seccion {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px 20px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.seccion h2 {
+  font-size: 30px;
+}
+
+.volver {
+  display: inline-block;
+
+  margin-top: 20px;
+
+  background: #111;
+  color: white;
+
+  padding: 12px 20px;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+}
+
+/* PIE */
+
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #777;
+}
+
+/* MÓVIL */
+
+@media (max-width: 600px) {
+
+  header h1 {
+    font-size: 34px;
+  }
+
+  .menu {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <header>
-    <h1>LOS FULAÑEROS</h1>
-    <p>Bienvenidos a nuestra web</p>
-  </header>
 
-  <div class="menu">
+<header>
 
-    <a class="categoria" href="comidas.html">
-      🍽️<br>Comilonas
-    </a>
+<h1>LOS FULAÑEROS</h1>
 
-    <a class="categoria" href="rutas.html">
-      🗺️<br>Rutas
-    </a>
+<p>Bienvenidos a nuestra web</p>
 
-    <a class="categoria" href="pinpon.html">
-      🏓<br>PinPon
-    </a>
+</header>
 
-    <a class="categoria" href="fiestas.html">
-      🎉<br>Fiestas
-    </a>
 
-    <a class="categoria" href="pielago.html">
-      🌊<br>Piélago
-    </a>
+<!-- MENÚ -->
 
-    <a class="categoria" href="quienes-somos.html">
-      👥<br>¿Quiénes somos?
-    </a>
+<div class="menu">
 
-  </div>
+<a class="boton" href="#comilonas">
+🍽️
+<br>
+Comilonas
+</a>
 
-  <footer>
-    Los Fulañeros
-  </footer>
+<a class="boton" href="#rutas">
+🗺️
+<br>
+Rutas
+</a>
+
+<a class="boton" href="#pinpon">
+🏓
+<br>
+PinPon
+</a>
+
+<a class="boton" href="#fiestas">
+🎉
+<br>
+Fiestas
+</a>
+
+<a class="boton" href="#pielago">
+🌊
+<br>
+Piélago
+</a>
+
+<a class="boton" href="#quienes">
+👥
+<br>
+¿Quiénes somos?
+</a>
+
+</div>
+
+
+<!-- COMILONAS -->
+
+<section class="seccion" id="comilonas">
+
+<h2>🍽️ Comilonas</h2>
+
+<p>
+Aquí iremos poniendo nuestras comilonas, restaurantes,
+comidas y planes gastronómicos.
+</p>
+
+<a class="volver" href="#">
+Volver arriba
+</a>
+
+</section>
+
+
+<!-- RUTAS -->
+
+<section class="seccion" id="rutas">
+
+<h2>🗺️ Rutas</h2>
+
+<p>
+Aquí iremos poniendo nuestras rutas, excursiones,
+lugares y recorridos.
+</p>
+
+<a class="volver" href="#">
+Volver arriba
+</a>
+
+</section>
+
+
+<!-- PINPON -->
+
+<section class="seccion" id="pinpon">
+
+<h2>🏓 PinPon</h2>
+
+<p>
+Aquí pondremos todo lo relacionado con PinPon.
+</p>
+
+<a class="volver" href="#">
+Volver arriba
+</a>
+
+</section>
+
+
+<!-- FIESTAS -->
+
+<section class="seccion" id="fiestas">
+
+<h2>🎉 Fiestas</h2>
+
+<p>
+Aquí tendremos nuestras fiestas, fechas,
+planes y eventos.
+</p>
+
+<a class="volver" href="#">
+Volver arriba
+</a>
+
+</section>
+
+
+<!-- PIÉLAGO -->
+
+<section class="seccion" id="pielago">
+
+<h2>🌊 Piélago</h2>
+
+<p>
+Aquí pondremos todo lo relacionado con Piélago.
+</p>
+
+<a class="volver" href="#">
+Volver arriba
+</a>
+
+</section>
+
+
+<!-- QUIÉNES SOMOS -->
+
+<section class="seccion" id="quienes">
+
+<h2>👥 ¿Quiénes somos?</h2>
+
+<p>
+Aquí explicaremos quiénes somos y todo sobre
+Los Fulañeros.
+</p>
+
+<a class="volver" href="#">
+Volver arriba
+</a>
+
+</section>
+
+
+<footer>
+
+Los Fulañeros
+
+</footer>
+
 
 </body>
 </html>
