@@ -1,1 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Eventos - Los Fulañeros</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7ff;
+  color: #222;
+}
+
+header {
+  background: linear-gradient(135deg, #34495e, #5dade2);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 44px;
+}
+
+header p {
+  font-size: 18px;
+}
+
+main {
+  max-width: 950px;
+  margin: 35px auto;
+  padding: 20px;
+}
+
+.volver {
+  display: inline-block;
+  margin-bottom: 25px;
+  background: #111;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.eventos {
+  display: grid;
+  gap: 20px;
+}
+
+.evento {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+}
+
+.evento h2 {
+  margin-top: 0;
+  font-size: 28px;
+}
+
+.dato {
+  margin: 8px 0;
+  font-size: 17px;
+}
+
+.descripcion {
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.sin-eventos {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+footer {
+  text-align: center;
+  padding: 45px 20px;
+  margin-top: 40px;
+  background: #111;
+  color: #aaa;
+}
+
+footer strong {
+  color: white;
+}
+
+@media (max-width: 600px) {
+
+  header h1 {
+    font-size: 36px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>📅 Próximos eventos</h1>
+
+<p>Los Fulañeros</p>
+
+</header>
+
+<main>
+
+<a class="volver" href="index.html">
+← Volver al inicio
+</a>
+
+<div id="eventos" class="eventos">
+
+<div class="sin-eventos">
+Cargando eventos...
+</div>
+
+</div>
+
+</main>
+
+<footer>
+
+<strong>LOS FULAÑEROS</strong>
+
+<br><br>
+
+📅 Próximos eventos
+
+</footer>
+
+<script>
+
+/*
+  EVENTOS
+
+  Para añadir un evento de momento,
+  tendrás que añadirlo aquí en el código.
+*/
+
+const eventos = [
+
+  {
+    nombre: "🎉 Fiesta de Los Fulañeros",
+    fecha: "16/08/2026",
+    hora: "20:00",
+    lugar: "Covarrubias, Burgos",
+    descripcion: "Gran día de fiesta de Los Fulañeros."
+  },
+
+  {
+    nombre: "🍽️ Comilona de la Peña",
+    fecha: "22/08/2026",
+    hora: "14:00",
+    lugar: "Covarrubias",
+    descripcion: "Comida y tarde juntos."
+  }
+
+];
+
+
+const contenedor =
+document.getElementById("eventos");
+
+
+/* MOSTRAR EVENTOS */
+
+contenedor.innerHTML = "";
+
+
+if (eventos.length === 0) {
+
+  contenedor.innerHTML = `
+    <div class="sin-eventos">
+      No hay próximos eventos.
+    </div>
+  `;
+
+} else {
+
+  eventos.forEach(evento => {
+
+    const tarjeta =
+    document.createElement("div");
+
+    tarjeta.className = "evento";
+
+    tarjeta.innerHTML = `
+
+      <h2>${evento.nombre}</h2>
+
+      <div class="dato">
+        📅 <strong>Fecha:</strong>
+        ${evento.fecha}
+      </div>
+
+      <div class="dato">
+        🕐 <strong>Hora:</strong>
+        ${evento.hora}
+      </div>
+
+      <div class="dato">
+        📍 <strong>Lugar:</strong>
+        ${evento.lugar}
+      </div>
+
+      <div class="descripcion">
+        ${evento.descripcion}
+      </div>
+
+    `;
+
+    contenedor.appendChild(tarjeta);
+
+  });
+
+}
+
+</script>
+
+</body>
+</html>
